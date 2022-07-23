@@ -6,26 +6,13 @@ import TasksList from "./components/TasksList"
 
 
 function App() {
-  const [tasks,setTasks] =  useState([ {
-    id: 1,
-    status: true,
-    content: 'Fazer comida'
-    
-  },
-  {
-    id: 2,
-    content: 'Estudar 3 horas',
-    status: true
-  },
-  {
-    id: 3,
-    content: 'Estudar 6 horas',
-    status: false
-  }
-])
+  const [tasks,setTasks] =  useState<{content:string,status:boolean,id:number}[]>([])
 const [cont,setCont] =useState(tasks)
 useEffect(()=>{
-   setCont(tasks.filter(task => task.status))
+  if(tasks.length  > 0){
+
+    setCont(tasks.filter(task => task.status))
+  }
 
 },[tasks])
  
@@ -46,13 +33,17 @@ useEffect(()=>{
            <span className="text-blueList ">Concluidas <span className=" rounded-full mx-2 text-[#D9D9D9]   text-xs py-1  px-2 bg-grayToDoList400 gap-2"> {cont.length} de {tasks.length}</span></span>
       </div>
       <>
-        {tasks.map((task)=>{
+        {tasks.length > 0 ?   tasks.map((task)=>{
           return <TasksList setTasks={setTasks} key={task.id}   
           id={task.id} 
           content={task.content} 
           status={task.status} 
           tasks={tasks} />
-        })}
+        }):(<div className=" flex flex-col items-center mt-20">
+            <img src="/Clipboard.png" alt="Clipboard"  />
+            <span className=" w-[316px] mt-5 text-white  text-base font-bold align-top opacity-50">Você ainda não tem tarefas cadastradas Crie tarefas e organize seus itens a fazer</span>
+        </div>)}  
+
         </>
         
       </section>

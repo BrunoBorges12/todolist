@@ -4,7 +4,6 @@
     });
     const tempTasks = [...task];
     tempTasks[taskIndex].status = !tempTasks[taskIndex].status;
-    console.log('temp',tempTasks   )
     setTasks(tempTasks)
 }
         
