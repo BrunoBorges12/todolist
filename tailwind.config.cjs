@@ -14,10 +14,8 @@ module.exports = {
         blueDark:'#1E6F9F',
         blueList:'#4EA8DE'
       },
-      backgroundImage: {
-        'add-task': "url('./public/Vector.png')",
-      }
+      
     },
-  },
+  },  
   plugins: [],
 }
