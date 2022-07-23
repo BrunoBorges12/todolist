@@ -7,6 +7,7 @@ function NewTask({setTasks}:props) {
     const [newTask,setNewTask] = useState('')
     let task ={id:1,content:'',status:true}
     function newTaskTitleFunction () {
+        setNewTask('')
         const max = 100
         if(newTask.length === 0){
             alert('Por favor  a lista não pode ser vazia')
